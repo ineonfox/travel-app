@@ -1,0 +1,8 @@
+.sight-item {
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    margin: 10px;
+    max-width: 400px;
+}

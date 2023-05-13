@@ -1,9 +1,21 @@
 import React from "react";
-import logo from "./logo.svg";
+//import logo from "./logo.svg";
 import "./App.css";
 
+import MainPage from "./components/MainPage";
+import { Routes, Route } from 'react-router-dom';
+import Plan from "./components/Plan";
+
 function App() {
-  const [data, setData] = React.useState(null);
+  return(
+    <div>
+      <Routes>
+        <Route path="/" element={<MainPage/>} />
+        <Route path="plan" element={<Plan />} />
+      </Routes>
+    </div>
+  );
+  /*const [data, setData] = React.useState(null);
 
   React.useEffect(() => {
     fetch("/api")
@@ -18,7 +30,7 @@ function App() {
         <p>{!data ? "Loading..." : data}</p>
       </header>
     </div>
-  );
+  );*/
 }
 
 export default App;

@@ -20,6 +20,6 @@
   "homepage": "https://github.com/ineonfox/travel-app#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "mysql": "^2.18.1"
+    "pg-promise": "^11.4.3"
   }
 }
