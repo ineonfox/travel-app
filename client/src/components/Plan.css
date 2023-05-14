@@ -1,0 +1,9 @@
+.plan-list {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+#map {
+    height: 100%;
+    height: 400px; 
+}

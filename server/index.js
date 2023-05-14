@@ -22,7 +22,7 @@ app.get("/generateTravel/:city/:days", (req, res) => {
   let timeAvailable = req.params.days * availableHoursPerDay;
   
 
-  db.many(`SELECT s."ID", s."Name", s."Type", s."Address", s."CityID", s."AverageTimeInHours", s."PopularityScale" FROM public."Sight" s LEFT JOIN public."City" ON public."City"."Name" = 'Lviv' ORDER BY RANDOM() LIMIT 100`) //LEFT JOIN public."City" ON public."City"."Name" = '${req.params.city}'
+  db.many(`SELECT s."Name", s."Address", s."AverageTimeInHours", s."Type", s."ID", s."ImageName", cit."Name" as "CityName" FROM "Sight" s INNER JOIN "City" cit ON s."CityID" = cit."ID" WHERE cit."Name" = '${req.params.city}' ORDER BY RANDOM() LIMIT 100`) //LEFT JOIN public."City" ON public."City"."Name" = '${req.params.city}'
     .then((data) => {
       sightsArray = data;
       const placesToVisit = [];
@@ -42,14 +42,3 @@ app.get("/generateTravel/:city/:days", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
-
-// connecting to PostgreSQL
-
-
-db.one('SELECT $1 AS value', 123)
-  .then((data) => {
-    console.log('DATA:', data.value)
-  })
-  .catch((error) => {
-    console.log('ERROR:', error)
-  })

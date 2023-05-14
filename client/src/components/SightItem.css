@@ -1,8 +1,80 @@
+* {
+    font-family: 'Calibri', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 .sight-item {
-    border-radius: 10px;
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
+    border-radius: 6px;
+    background-color: rgba(208, 236, 0, 0.05);
+    margin: 10px 15px;
+    min-width: 450px;
+    height: 225px;
+
+    display: grid;
+    grid-column-start: 1;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 25% 55% 20%;
+    flex-flow: column wrap;
+    justify-content: center;
+    transition: transform 0.15s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.sight-item:hover {
+    transform: scale(1.02);
+}
+
+.sight-item__title {
+    grid-column-start: 2;
     margin: 10px;
-    max-width: 400px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.sight-item__image {
+    max-width: 180px;
+    height: 225px;
+    border-top-left-radius: inherit;
+    grid-row-end: span 3;
+    display:inline;
+    margin: 0px 10px 0px 0px;
+    object-fit: cover;
+}
+
+.sight-item__description {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    margin: 10px 5px 0px 0px;
+}
+
+.sight-item__description > * {
+    margin: 5px 5px;
+    display: inline;
+    vertical-align: middle;
+}
+
+.sight-item__icon {
+    width: 15px;
+}
+
+.sight-item__path-button-div {
+    display: flex;
+    justify-content: flex-end;
+    grid-column-start: 2;
+    grid-row-start: 3;
+}
+
+.sight-item__path-button {
+    margin: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    padding: 0px 15px;
+    max-height: 32px;
+    transition: background-color 0.15s;
+}
+
+.sight-item__path-button:hover {
+    background-color: rgb(48, 48, 48);
 }
