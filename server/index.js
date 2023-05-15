@@ -22,7 +22,7 @@ app.get("/generateTravel/:city/:days", (req, res) => {
   let timeAvailable = req.params.days * availableHoursPerDay;
   
 
-  db.many(`SELECT s."Name", s."Address", s."AverageTimeInHours", s."Type", s."ID", s."ImageName", cit."Name" as "CityName" FROM "Sight" s INNER JOIN "City" cit ON s."CityID" = cit."ID" WHERE cit."Name" = '${req.params.city}' ORDER BY RANDOM() LIMIT 100`) //LEFT JOIN public."City" ON public."City"."Name" = '${req.params.city}'
+  db.many(`SELECT s."Name", s."Address", s."AverageTimeInHours", s."Type", s."ID", s."ImageName", s."PopularityScale", cit."Name" as "CityName" FROM "Sight" s INNER JOIN "City" cit ON s."CityID" = cit."ID" WHERE cit."Name" = '${req.params.city}' ORDER BY RANDOM() LIMIT 100`) //LEFT JOIN public."City" ON public."City"."Name" = '${req.params.city}'
     .then((data) => {
       sightsArray = data;
       const placesToVisit = [];
