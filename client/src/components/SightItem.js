@@ -21,17 +21,17 @@ export default function SightItem(props) {
           {props.imageName ? <img src={imgString} alt='A travel destination' className='sight-item__image'/> : <></>}
           <h2 className='sight-item__title'>{props.title}</h2>
           <div className='sight-item__description'>
-            <img className='sight-item__icon' src='./img/icons/city.png' />
+            <img className='sight-item__icon' alt='City' src='./img/icons/city.png' />
             <p>м. {props.cityName}</p>
             <br/>
-            <img className='sight-item__icon' src='./img/icons/house.png' />
+            <img className='sight-item__icon' alt='House' src='./img/icons/house.png' />
             <h4>{props.address}</h4>
             <br/>
-            <img className='sight-item__icon' src='./img/icons/clock.png' />
+            <img className='sight-item__icon' alt='Clock' src='./img/icons/clock.png' />
             <p>{props.startTime.toLocaleString('uk-UA', {dateStyle: 'short', timeStyle: 'short'})} - {endTime.toLocaleTimeString('uk-UA', {timeStyle: 'short'})}</p>
           </div>
           <div className='sight-item__path-button-div'>
-            <button className='sight-item__path-button' onClick={handleClick}>Прокласти шлях</button>
+            <button className='sight-item__path-button' onClick={handleClick}><img src='./img/icons/link.png' alt='Redirect' className='sight-item__button-icon' />Прокласти шлях</button>
           </div>
         </div>
       );

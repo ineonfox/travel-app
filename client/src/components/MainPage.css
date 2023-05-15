@@ -1,3 +1,134 @@
-.formDiv > * {
-    margin: 10px;
+.screen-div {
+	/* background: linear-gradient(-45deg, #ee775266, #e73c7e66, #23a6d566, #23d5ab66); */
+	/* background-size: 400% 400%; */
+	/* animation: gradient 25s ease infinite; */
+	height: 100vh;
+    object-fit:contain;
+    filter: blur(1px);
+    background-size: cover;
+    background-image: url('..\\..\\public\\img\\sightimg\\kyiv.jpg');
+    z-index: -1;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.form-div > * {
+    margin: 0px 10px 10px 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.form-div {
+    margin:auto;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1.2fr 1fr 1.3fr 2fr;
+    height: 220px;
+    width: 400px;
+    background-color: #feffeb88;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-lbl-where {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.form-inp-where {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    font-size: 1.15em;
+}
+
+.form-lbl-from {
+    grid-column-start: 1;
+    grid-row-start: 3;
+}
+
+.form-lbl-to {
+    grid-column-start: 2;
+    grid-row-start: 3;
+}
+
+.form-inp-from {
+    grid-column-start: 1;
+    grid-row-start: 4;
+}
+
+.form-inp-to {
+    grid-column-start: 2;
+    grid-row-start: 4;
+}
+
+.form-button {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    background-color: #00282f;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    padding: 0px 15px;
+    /* max-height: 32px; */
+    transition: background-color 0.15s;
+    font-size: 1.25em;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    margin-top: 10px;
+}
+
+.form-button:hover {
+    background-color: rgb(13, 62, 73);
+}
+
+.form-button:active {
+    background-color: rgb(18, 99, 113);
+}
+
+input {
+    background-color: #ffffff88;
+    border: none;
+    border-radius: 4px;
+    transition: transform 0.7s;
+}
+
+input:hover {
+    transform: scale(1.05);
+}
+
+.img-link {
+    position: absolute;
+    top: 100%;
+    color: white;
+    transform: translate(0, -100%);
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 0.9em;
+}
+
+.img-link > * {
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

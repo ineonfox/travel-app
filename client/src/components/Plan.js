@@ -6,15 +6,13 @@ import { addHours } from "./SightItem";
 import './Plan.css'
 
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import { useMemo } from "react";
 
 export default function Plan() {
-    const googleMapsAPIKey = "AIzaSyDgBZTyfOJpU2R361iSBRhjsicRB8lPg2o";
-    const { isLoaded, loadError } = useLoadScript({
+    const googleMapsAPIKey = "AIzaSyA1UVuD5jeNjg3kY10hxEAYQDjT_GosPv4";
+    const { isLoaded } = useLoadScript({
         googleMapsApiKey: googleMapsAPIKey // ,
         // ...otherOptions
       })
-      const center = useMemo(() => ({ lat: 18.52043, lng: 73.856743 }), []);
 
     const { state } = useLocation();
     const [data, setData] = React.useState([]);
@@ -36,15 +34,15 @@ export default function Plan() {
                     })
             };
         })
-    }, []);
+    }, [state.city, totalDays]);
 
     React.useEffect(() => {
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${state.city}&key=${googleMapsAPIKey}`)
           .then((res) => res.json())
           .then((geo) => setGeocode(geo.results[0].geometry.location))
-    }, []);
+    }, [state.city]);
 
-    const startDatetime = new Date(state.startDate);
+    let startDatetime = new Date(state.startDate);
     startDatetime.setHours(9);
     //console.log(startDatetime);
     //console.log(typeof startDatetime);
@@ -52,17 +50,19 @@ export default function Plan() {
         <div className='plan-page'>
             <div className='plan-list'>
             {!data || !markers ? "Loading..." : 
-            data.map((item) => 
-            <SightItem
-                key={item.ID}
-                title={item.Name}
-                imageName={item.ImageName}
-                cityName={item.CityName}
-                address={item.Address}
-                time={item.AverageTimeInHours}
-                startTime={startDatetime}
-                popularity={item.popularityScale}
-            /> )}
+            data.map((item) => {
+                startDatetime = addHours(startDatetime, item.AverageTimeInHours);
+                return <SightItem
+                    key={item.ID}
+                    title={item.Name}
+                    imageName={item.ImageName}
+                    cityName={item.CityName}
+                    address={item.Address}
+                    time={item.AverageTimeInHours}
+                    startTime={addHours(startDatetime, -item.AverageTimeInHours)}
+                    popularity={item.popularityScale}
+                    endTime={startDatetime}
+                /> })}
             </div>
             <div className="plan-map">
             {!isLoaded || !geocode || (markers.length < 1) ? (
@@ -73,7 +73,7 @@ export default function Plan() {
                     center={geocode}
                     zoom={13}
                 >
-                    {markers.map(({ lat: lat, lng: lng }) => (
+                    {markers.map(({ lat, lng }) => (
                     <Marker key={lat} position={{ lat, lng }} />
                     ))}
                 </GoogleMap>
