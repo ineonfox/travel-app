@@ -2,13 +2,13 @@ import React from 'react'
 import { useLocation } from "react-router-dom";
 import SightItem from "./SightItem";
 import { addHours } from "./SightItem";
-
+import {config} from "../config";
 import './Plan.css'
 
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 
 export default function Plan() {
-    const googleMapsAPIKey = "AIzaSyA1UVuD5jeNjg3kY10hxEAYQDjT_GosPv4";
+    const googleMapsAPIKey = config.GOOGLE_API_KEY;
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: googleMapsAPIKey // ,
         // ...otherOptions

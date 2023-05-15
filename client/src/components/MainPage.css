@@ -40,8 +40,8 @@
     grid-template-rows: 1fr 1.2fr 1fr 1.3fr 2fr;
     height: 220px;
     width: 400px;
-    background-color: #feffeb88;
-    backdrop-filter: blur(5px);
+    background-color: #f7f8ff88;
+    backdrop-filter: blur(4px);
     padding: 20px;
     border-radius: 5px;
 }
@@ -84,13 +84,12 @@
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 5;
-    background-color: #00282f;
+    background-color: #002b4c;
     color: white;
     border-radius: 10px;
     font-weight: 600;
     border: none;
     padding: 0px 15px;
-    /* max-height: 32px; */
     transition: background-color 0.15s;
     font-size: 1.25em;
     align-items: center;
@@ -100,11 +99,11 @@
 }
 
 .form-button:hover {
-    background-color: rgb(13, 62, 73);
+    background-color: #004478;
 }
 
 .form-button:active {
-    background-color: rgb(18, 99, 113);
+    background-color: #005698;
 }
 
 input {
