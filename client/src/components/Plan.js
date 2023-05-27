@@ -6,6 +6,7 @@ import {config} from "../config";
 import './Plan.css'
 
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import SideMenu from './SideMenu';
 
 export default function Plan() {
     const googleMapsAPIKey = config.GOOGLE_API_KEY;
@@ -34,13 +35,13 @@ export default function Plan() {
                     })
             };
         })
-    }, [state.city, totalDays]);
+    }, [state.city, totalDays, googleMapsAPIKey]);
 
     React.useEffect(() => {
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${state.city}&key=${googleMapsAPIKey}`)
           .then((res) => res.json())
           .then((geo) => setGeocode(geo.results[0].geometry.location))
-    }, [state.city]);
+    }, [state.city, googleMapsAPIKey]);
 
     let startDatetime = new Date(state.startDate);
     startDatetime.setHours(9);
@@ -48,6 +49,7 @@ export default function Plan() {
     //console.log(typeof startDatetime);
     return(
         <div className='plan-page'>
+            <SideMenu className='plan-menu' />
             <div className='plan-list'>
             {!data || !markers ? "Loading..." : 
             data.map((item) => {
