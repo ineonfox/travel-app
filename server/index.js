@@ -12,7 +12,18 @@ app.get("/api", (req, res) => {
 
 app.get("/api/getCity/:city", (req, res) => {
   db.one(`SELECT "ID" FROM public."City" WHERE Name='${req.params.city}' LIMIT 1`)
-    .then((data) => res.send(data));
+    .then((data) => res.send(data))
+    .catch((error) => {
+      console.log('ERROR:', error)
+    });
+});
+
+app.get("/api/getTrainId/:city", (req, res) => {
+  db.one(`SELECT "ExpressCode" FROM public."TrainExpressCode" tec INNER JOIN "City" cit ON tec."CityID" = cit."ID" WHERE cit."Name" = '${req.params.city}' LIMIT 1`)
+    .then((data) => res.send(data))
+    .catch((error) => {
+      console.log('ERROR:', error)
+    });
 });
 
 app.get("/generateTravel/:city/:days", (req, res) => {

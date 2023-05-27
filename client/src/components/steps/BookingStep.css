@@ -1,0 +1,85 @@
+.step-tickets-p {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    align-self: flex-end;
+    color: #0A0A0A;
+}
+
+.step-tickets-buttons-div {
+    grid-row-start: 4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-wrap: wrap;
+}
+
+.step-tickets-buttons-icon {
+    height: 75px;
+    font-size: 1.25em;
+    width: 20%;
+    min-width: 135px;
+    max-height: 200px;
+}
+
+.step-tickets-buttons-div > button > img {
+    width: 40px;
+}
+
+@media (max-width: 1150px) {
+    .step-tickets-buttons-icon {
+        height: 75px;
+        font-size: 1.15em;
+        width: 25%;
+        max-height: 200px;
+    }
+
+    .step-tickets-buttons-div > button > img {
+        width: 24px;
+    }
+}
+
+.step-tickets-skip {
+    height: 28px;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    align-self: flex-end;
+    justify-self: flex-end;
+    margin: 0;
+    width: 180px;
+    font-size: 1em;
+}
+
+.step-hotels-back {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 5;
+    justify-self: flex-start;
+}
+
+.input-tickets {
+    grid-column: 1 / 5;
+    grid-row: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.input-tickets > div {
+    margin: 0px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-tickets > div > * {
+    margin: 5px;
+    text-align: center;
+}
+
+#passAmount {
+    width: 120px;
+    align-self: center;
+}

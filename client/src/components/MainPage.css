@@ -1,25 +1,10 @@
 .screen-div {
-	/* background: linear-gradient(-45deg, #ee775266, #e73c7e66, #23a6d566, #23d5ab66); */
-	/* background-size: 400% 400%; */
-	/* animation: gradient 25s ease infinite; */
 	height: 100vh;
     object-fit:contain;
     filter: blur(1px);
     background-size: cover;
     background-image: url('..\\..\\public\\img\\sightimg\\kyiv.jpg');
     z-index: -1;
-}
-
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
 }
 
 .form-div > * {
@@ -36,14 +21,17 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1.2fr 1fr 1.3fr 2fr;
     height: 220px;
     width: 400px;
     background-color: #f7f8ff88;
     backdrop-filter: blur(4px);
     padding: 20px;
     border-radius: 5px;
+}
+
+.grid-form-div {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1.2fr 1fr 1.3fr 2fr;
 }
 
 .form-lbl-where {

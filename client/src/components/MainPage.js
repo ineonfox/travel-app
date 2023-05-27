@@ -29,14 +29,14 @@ export default function MainPage() {
 
     function handleClick(event) {
         (!city || !startDate || !endDate) ? alert("Будь ласка, заповніть усі поля.") :
-        navigate('/plan', {state: {city, startDate, endDate}});
+        navigate('/steps', {state: {city, startDate, endDate}});
     }
 
     var minDate = new Date().toISOString().slice(0, 10);
     return(
         <div>
         <div className="screen-div"></div>
-        <div className="form-div">
+        <div className="form-div grid-form-div">
             <label className="form-lbl-where" htmlFor="travelCity">Куди плануєте подорожувати?</label>
             <input className="form-inp-where" placeholder="Впишіть назву міста..." required type="text" id="travelCity" name="travelCity" onChange={handleOnChange} />
 
@@ -50,7 +50,6 @@ export default function MainPage() {
         <div className="img-link">
             Image by <a href="https://pixabay.com/users/zephyrka-1146005/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5202547">Nadine</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5202547">Pixabay</a>
         </div>
-        
         </div>
     )
 }

@@ -1,0 +1,41 @@
+.step-progress-bar {
+    width: 95%;
+    height: 12px;
+    border: 2px #005698 solid;
+    border-radius: 15px;
+    margin: 0px 5px;
+}
+
+.progress-bar-div {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: left; */
+}
+
+.progress-bar-p {
+    color: #151515;
+    font-size: 0.75em;
+    padding: 0;
+    margin: 0;
+}
+
+.progress-bar-1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    /* justify-self: right; */
+    /* background: linear-gradient(70deg, #005698 10%, #00000000 15%); */
+}
+
+.progress-bar-2 {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    
+}
+
+.filling-progress {
+    height: 100%;
+    background-color: #005698;
+    transition: width 0.75s;
+    border-radius: 8px;
+}

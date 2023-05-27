@@ -1,0 +1,25 @@
+.plane-p {
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 2;
+    align-self: center;
+}
+
+.plane-button {
+    width: 150px;
+    grid-row-start: 4;
+    grid-column: 2 / span 2;
+    grid-row: 4;
+    align-self: center;
+    justify-self: center;
+    height: 35px;
+}
+
+.plane-button > img {
+    width: 24px;
+}
+
+@media (max-width: 800px) {
+    .plane-p {
+        grid-column: 1 / span 4;
+    }
+}
