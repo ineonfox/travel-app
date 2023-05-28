@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation } from "react-router-dom";
 import SightItem from "./SightItem";
 import { addHours } from "./SightItem";
@@ -7,6 +7,7 @@ import './Plan.css'
 
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import SideMenu from './SideMenu';
+import ModalRecipe from './regionFacts/ModalRecipe';
 
 export default function Plan() {
     const googleMapsAPIKey = config.GOOGLE_API_KEY;
@@ -16,6 +17,7 @@ export default function Plan() {
       })
 
     const { state } = useLocation();
+    const [modalOpen, setModalOpen] = useState("");
     const [data, setData] = React.useState([]);
     const [geocode, setGeocode] = React.useState(null);
     const [markers, setMarkers] = React.useState([]);
@@ -49,7 +51,8 @@ export default function Plan() {
     //console.log(typeof startDatetime);
     return(
         <div className='plan-page'>
-            <SideMenu className='plan-menu' />
+            <SideMenu className='plan-menu' setModalOpen={setModalOpen} />
+            {modalOpen === "Recipe" ? <ModalRecipe setModalOpen={setModalOpen} city={state.city}/> : null}
             <div className='plan-list'>
             {!data || !markers ? "Loading..." : 
             data.map((item) => {

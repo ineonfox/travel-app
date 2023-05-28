@@ -10,16 +10,24 @@ app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
 });
 
-app.get("/api/getCity/:city", (req, res) => {
-  db.one(`SELECT "ID" FROM public."City" WHERE Name='${req.params.city}' LIMIT 1`)
+// app.get("/api/getCity/:city", (req, res) => {
+//   db.one(`SELECT "ID" FROM public."City" WHERE Name='${req.params.city}' LIMIT 1`)
+//     .then((data) => res.send(data))
+//     .catch((error) => {
+//       console.log('ERROR:', error)
+//     });
+// });
+
+app.get("/api/getTrainId/:city", (req, res) => {
+  db.one(`SELECT "ExpressCode" FROM public."TrainExpressCode" tec INNER JOIN "City" cit ON tec."CityID" = cit."ID" WHERE cit."Name" = '${req.params.city}' LIMIT 1`)
     .then((data) => res.send(data))
     .catch((error) => {
       console.log('ERROR:', error)
     });
 });
 
-app.get("/api/getTrainId/:city", (req, res) => {
-  db.one(`SELECT "ExpressCode" FROM public."TrainExpressCode" tec INNER JOIN "City" cit ON tec."CityID" = cit."ID" WHERE cit."Name" = '${req.params.city}' LIMIT 1`)
+app.get("/api/getRecipe/:city", (req, res) => {
+  db.one(`SELECT cr."Name", cr."Ingredients", cr."Description", cr."TimeToPrepare", cr."CookingProcessDesc", cr."ImageName" FROM public."CookingRecipe" cr INNER JOIN "City" cit ON cr."CityID" = cit."ID" WHERE cit."Name" = '${req.params.city}' LIMIT 1`)
     .then((data) => res.send(data))
     .catch((error) => {
       console.log('ERROR:', error)

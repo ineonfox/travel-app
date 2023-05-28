@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './SideMenu.css';
 import { useNavigate } from 'react-router-dom';
 
-export default function SideMenu() {
+export default function SideMenu(props) {
     const [isExpanded, setIsExpanded] = useState(false);
     const navigate = useNavigate();
 
@@ -15,7 +15,8 @@ export default function SideMenu() {
     }
 
     function handleOpenMenuClick(e) {
-
+        e.preventDefault();
+        props.setModalOpen(e.target.id);
     }
 
     function handleHomeClick(e) {
@@ -25,9 +26,9 @@ export default function SideMenu() {
     return(
         <div className='sidemenu-div' style={{width: isExpanded ? "18%" : "3%"}}>
             <button className="invisible-button" onClick={handleExpandMenu}><img className='menu-icon' alt='Menu' src='./img/icons/menu_black.png' /><p style={{opacity: isExpanded ? '100%' : '0%', fontSize: isExpanded ? '1.1em' : '0.01em'}}>Меню</p></button>
-            <button className="invisible-button" onClick={handleOpenMenuClick}><img className='menu-icon' alt='Menu' src='./img/icons/history.png' /><p style={{opacity: isExpanded ? '100%' : '0%', fontSize: isExpanded ? '1.1em' : '0.01em'}}>Історія регіону</p></button>
-            <button className="invisible-button" onClick={handleOpenMenuClick}><img className='menu-icon' alt='Menu' src='./img/icons/culture.png' /><p style={{opacity: isExpanded ? '100%' : '0%', fontSize: isExpanded ? '1.1em' : '0.01em'}}>Культура регіону</p></button>
-            <button className="invisible-button" onClick={handleOpenMenuClick}><img className='menu-icon' alt='Menu' src='./img/icons/recipes.png' /><p style={{opacity: isExpanded ? '100%' : '0%', fontSize: isExpanded ? '1.1em' : '0.01em'}}>Рецепти</p></button>
+            <button className="invisible-button" id='History' onClick={handleOpenMenuClick}><img className='menu-icon' alt='Menu' src='./img/icons/history.png' /><p style={{opacity: isExpanded ? '100%' : '0%', fontSize: isExpanded ? '1.1em' : '0.01em'}}>Історія регіону</p></button>
+            <button className="invisible-button" id='Culture' onClick={handleOpenMenuClick}><img className='menu-icon' alt='Menu' src='./img/icons/culture.png' /><p style={{opacity: isExpanded ? '100%' : '0%', fontSize: isExpanded ? '1.1em' : '0.01em'}}>Культура регіону</p></button>
+            <button className="invisible-button" id='Recipe' onClick={handleOpenMenuClick}><img className='menu-icon' alt='Menu' src='./img/icons/recipes.png' /><p style={{opacity: isExpanded ? '100%' : '0%', fontSize: isExpanded ? '1.1em' : '0.01em'}}>Рецепти</p></button>
             <button className="invisible-button button-align-end" onClick={handleHomeClick}><img className='menu-icon' alt='Menu' src='./img/icons/house.png' /><p style={{opacity: isExpanded ? '100%' : '0%', fontSize: isExpanded ? '1.1em' : '0.01em'}}>Повернутись назад</p></button>
         </div>
     );

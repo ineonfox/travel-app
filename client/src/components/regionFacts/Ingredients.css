@@ -1,0 +1,23 @@
+.ingredients-div {
+    margin: auto;
+    margin-top: 10px;
+    background: #d9f18b55;
+    border-radius: 8px;
+    padding: 5px 10px;
+    width: 44%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.03), 0 6px 20px 0 rgba(0, 0, 0, 0.08);
+}
+
+.ingredients-div > h5 {
+    font-size: 1.3em;
+    margin: 0;
+    margin-top: 5px;
+    padding: 0;
+    text-align: center;
+    font-family: 'Exo 2';
+}
+
+.ingr-p {
+    margin: 3px;
+    font-family: 'Exo 2';
+}

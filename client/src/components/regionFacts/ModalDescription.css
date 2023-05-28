@@ -1,0 +1,14 @@
+.recipe-desc-div {
+    width: 88%;
+    align-self: center;
+    /* margin: auto; */
+    margin: 10px auto;
+    background-color: #d9f18b55;
+    border-radius: 8px;
+    padding: 5px 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.recipe-desc-div > p {
+    font-family: 'Exo 2';
+}
