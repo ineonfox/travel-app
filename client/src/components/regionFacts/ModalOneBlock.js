@@ -18,7 +18,7 @@ export default function ModalOneBlock(props) {
     return (
         <ModalWindow imgSource={imgSource} setModalOpen={props.setModalOpen}>
             <h2 className='oneblock-name'>{data.Name}</h2>
-            <ModalDescription description={data.Description} />
+            <ModalDescription description={data.Description} fontSize={"1.2em"} />
         </ModalWindow>
     );
 }

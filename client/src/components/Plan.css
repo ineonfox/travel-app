@@ -28,3 +28,44 @@
 .plan-menu {
     justify-self: center;
 }
+
+.edit-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    /* margin-top: 50px; */
+}
+
+.edit-div > * {
+    margin: 20px;
+    margin-bottom: 0px;
+    font-size: 1.1em;
+}
+
+.edit-submit-button {
+    /* margin: 10px; */
+    background-color: #002b4c;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    padding: 5px 15px;
+    max-height: 32px;
+    transition: background-color 0.15s;
+
+    /* align-self: center; */
+    /* justify-content: space-around; */
+    /* position: fixed; */
+    /* transform: translateX(-50%); */
+    /* bottom: 10%; */
+    /* left: 50%; */
+}
+
+.edit-submit-button:hover {
+    background-color: #004478;
+}
+
+.edit-submit-button:active {
+    background-color: #005698;
+}

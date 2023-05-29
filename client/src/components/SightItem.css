@@ -27,6 +27,7 @@
 .sight-item__title {
     grid-column-start: 2;
     margin: 10px;
+    margin-right: 30px;
     font-size: 1.2em;
     text-align: center;
 }
@@ -91,4 +92,35 @@
 .sight-item__button-icon {
     width: 12px;
     margin: 0px 10px 0px 0px;
+}
+
+.sight-item-delete-button {
+    display: none;
+}
+
+.sight-item:hover > .sight-item-delete-button {
+    display: block;
+    position: fixed;
+    top:10px;
+    right:10px;
+
+    background: transparent;
+    border: none;
+    padding: 5px;
+    transition: transform 0.2s;
+    align-items: center;
+}
+
+.delete-icon {
+    width: 12px;
+}
+
+.edit-icon {
+    width: 12px;
+    margin: 0;
+    display: none;
+}
+
+.sight-item:hover > .sight-item__description > .edit-icon {
+    display: inline;
 }
