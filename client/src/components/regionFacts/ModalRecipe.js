@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './ModalRecipe.css';
 import Ingredients from './Ingredients';
 import ModalDescription from './ModalDescription';
+import ModalWindow from './ModalWindow';
 
 export default function ModalRecipe(props) {
     const [recipe, setRecipe] = useState({});
@@ -16,26 +17,17 @@ export default function ModalRecipe(props) {
           )
         }, [props.city]);
 
-    function handleCloseClick(e) {
-        props.setModalOpen("");
-    }
-
     return (
-        <div className="recipe-screen">
-            <div className="recipe-div">
-                <button onClick={handleCloseClick} className='invisible-button recipe-close-button'><img className='modal-icon' alt='Close' src='./img/icons/close.png' /></button>
-                <img src={imgSource} alt='Food' />
-                <h2>{recipe.Name}</h2>
-                <div className='recipe-details-div'>
-                    <Ingredients ingredients={recipe.Ingredients} />
-                    <div className='recipe-details-inside-div'>
-                        <ModalDescription description={recipe.Description} />
-                        
-                    </div>
+        <ModalWindow imgSource={imgSource} setModalOpen={props.setModalOpen}>
+            <h2>{recipe.Name}</h2>
+            <div className='recipe-details-div'>
+                <Ingredients ingredients={recipe.Ingredients} />
+                <div className='recipe-details-inside-div'>
+                    <ModalDescription description={recipe.Description} />
                 </div>
-                <h2>Як приготувати?</h2>
-                <ModalDescription description={recipe.CookingProcessDesc} />
             </div>
-        </div>
+            <h2>Як приготувати?</h2>
+            <ModalDescription description={recipe.CookingProcessDesc} />
+        </ModalWindow>
     );
 }

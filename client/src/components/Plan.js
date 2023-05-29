@@ -8,6 +8,7 @@ import './Plan.css'
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import SideMenu from './SideMenu';
 import ModalRecipe from './regionFacts/ModalRecipe';
+import ModalOneBlock from './regionFacts/ModalOneBlock';
 
 export default function Plan() {
     const googleMapsAPIKey = config.GOOGLE_API_KEY;
@@ -52,7 +53,8 @@ export default function Plan() {
     return(
         <div className='plan-page'>
             <SideMenu className='plan-menu' setModalOpen={setModalOpen} />
-            {modalOpen === "Recipe" ? <ModalRecipe setModalOpen={setModalOpen} city={state.city}/> : null}
+            {modalOpen ? modalOpen === "Recipe" ? <ModalRecipe setModalOpen={setModalOpen} city={state.city}/> 
+                : <ModalOneBlock apiLink={`/api/getFacts/${modalOpen}/${state.city}`} setModalOpen={setModalOpen} /> : null}
             <div className='plan-list'>
             {!data || !markers ? "Loading..." : 
             data.map((item) => {

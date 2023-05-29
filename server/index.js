@@ -34,6 +34,14 @@ app.get("/api/getRecipe/:city", (req, res) => {
     });
 });
 
+app.get("/api/getFacts/:type/:city", (req, res) => {
+  db.one(`SELECT rf."Name", rf."Description", rf."ImageName" FROM public."RegionFact" rf INNER JOIN "City" cit ON rf."CityID" = cit."ID" WHERE cit."Name" = '${req.params.city}' AND rf."Type" = '${req.params.type}' LIMIT 1`)
+  .then((data) => res.send(data))
+  .catch((error) => {
+    console.log('ERROR:', error)
+  });
+});
+
 app.get("/generateTravel/:city/:days", (req, res) => {
   const availableHoursPerDay = 10;
   
