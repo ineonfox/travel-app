@@ -1,0 +1,39 @@
+.weather-div {
+    background: linear-gradient(172deg, rgb(153, 190, 245) 55%, rgba(123, 171, 244, 0.7));
+    height: 100%;
+    min-width: 17%;
+    border-radius: 10px;
+    margin-right: 5px;
+    z-index: -1;
+    position: relative;
+    transform: translateZ(-10px);
+
+    display: grid;
+    grid-template-rows: 4fr 3fr;
+    grid-template-columns: 2fr 1fr;
+}
+
+.weather-div > p {
+    color: white;
+    font-family: 'Exo 2';
+    margin: 0;
+}
+
+.weather-temperature {
+    font-size: 2.2em;    
+    font-weight: 100;
+    padding: 0;
+    padding-left: 3px;
+}
+
+.weather-date {
+    grid-row: 2;
+    padding: 0;
+    padding-left: 5px;
+    align-self: center;
+}
+
+.weather-icon {
+    width: 54px;
+    grid-row: 1/3;
+}

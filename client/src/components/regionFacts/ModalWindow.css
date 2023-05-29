@@ -9,6 +9,7 @@
     animation-name: darken-background;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    overscroll-behavior: contain;
 }
 
 @keyframes darken-background {

@@ -4,7 +4,7 @@
 
 .sight-item {
     border-radius: 6px;
-    background-color: rgba(208, 236, 0, 0.05);
+    background-color: rgb(236, 243, 253); /* 231, 231, 231   rgba(208, 236, 0, 0.05);*/
     margin: 10px 15px;
     min-width: 335px;
     height: 225px; /*225px should be */

@@ -10,6 +10,7 @@ import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import SideMenu from './SideMenu';
 import ModalRecipe from './regionFacts/ModalRecipe';
 import ModalOneBlock from './regionFacts/ModalOneBlock';
+import Weather from './Weather';
 
 export const addHours = (date, h) => {
     const newDate = new Date(date)
@@ -100,9 +101,13 @@ export default function Plan() {
                     <button className='edit-submit-button' onClick={handleEditSubmitClick}>Змінити</button>
                 </div>
             </ModalWindow> : null }
+
+            {/* Side menu */}
             <SideMenu className='plan-menu' setModalOpen={setModalOpen} />
             {modalOpen ? modalOpen === "Recipe" ? <ModalRecipe setModalOpen={setModalOpen} city={state.city}/> 
                 : <ModalOneBlock apiLink={`/api/getFacts/${modalOpen}/${state.city}`} setModalOpen={setModalOpen} /> : null}
+
+            {/* Left panel - plan list */}    
             <div className='plan-list'>
             {!data || !markers ? "Loading..." : 
             data.map((item, index) => {
@@ -127,6 +132,17 @@ export default function Plan() {
                     index={index}
                 /> })}
             </div>
+
+            {/* Weather panel*/}
+            <div className='plan-weather'>
+                <p>Прогноз погоди у місті {state.city}</p>
+                <Weather/>
+                <Weather/>
+                <Weather/>
+                {/* <div className='weather-filler'/> */}
+            </div>
+
+            {/* Map panel */}
             <div className="plan-map">
             {!isLoaded || !geocode ? (
                 <h1>Loading...</h1>
