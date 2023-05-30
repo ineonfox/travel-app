@@ -32,10 +32,17 @@ export default function MainPage() {
         navigate('/steps', {state: {city, startDate, endDate}});
     }
 
+    // function handleLoginClick(event) {
+    //     navigate('/login');
+    // }
+
     var minDate = new Date().toISOString().slice(0, 10);
     return(
         <div>
         <div className="screen-div"></div>
+        {/* <button className="login-button-main" type="button" onClick={handleLoginClick}>
+            Логін / Реєстрація
+        </button> */}
         <div className="form-div grid-form-div">
             <label className="form-lbl-where" htmlFor="travelCity">Куди плануєте подорожувати?</label>
             <input className="form-inp-where" placeholder="Впишіть назву міста..." required type="text" id="travelCity" name="travelCity" onChange={handleOnChange} />

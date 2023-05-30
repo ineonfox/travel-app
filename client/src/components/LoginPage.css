@@ -1,0 +1,8 @@
+.login-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-div > p {
+    font-size: 1.5em;
+}
