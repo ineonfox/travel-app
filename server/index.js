@@ -1,10 +1,14 @@
 const express = require("express");
 const pgp = require('pg-promise')(/* options */)
+const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 const db = pgp('postgres://postgres:tono1234@localhost:5432/traveldb')
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
@@ -36,6 +40,29 @@ app.get("/api/getRecipe/:city", (req, res) => {
 
 app.get("/api/getFacts/:type/:city", (req, res) => {
   db.one(`SELECT rf."Name", rf."Description", rf."ImageName" FROM public."RegionFact" rf INNER JOIN "City" cit ON rf."CityID" = cit."ID" WHERE cit."Name" = '${req.params.city}' AND rf."Type" = '${req.params.type}' LIMIT 1`)
+  .then((data) => res.send(data))
+  .catch((error) => {
+    console.log('ERROR:', error)
+  });
+});
+
+app.post("/api/register", (req, res) => {
+  let data = req.body;
+  console.log(JSON.stringify(data));
+  // res.send('Data Received: ' + JSON.stringify(data));
+  
+  db.one(`INSERT INTO public."User" ("Nickname", "Email", "Password") VALUES ('${data.nickname}'::character varying, '${data.email}'::text, '${data.password}'::text) returning "ID"`)
+  // db.one(`SELECT rf."Name", rf."Description", rf."ImageName" FROM public."RegionFact" rf INNER JOIN "City" cit ON rf."CityID" = cit."ID" WHERE cit."Name" = '${req.params.city}' AND rf."Type" = '${req.params.type}' LIMIT 1`)
+  .then((data) => res.send(data))
+  .catch((error) => {
+    console.log('ERROR:', error)
+  });
+});
+
+app.post("/api/login", (req, res) => {
+  let data = req.body;
+  console.log(JSON.stringify(data));
+  db.any(`SELECT * FROM public."User" u WHERE u."Email" = '${data.email}'`)
   .then((data) => res.send(data))
   .catch((error) => {
     console.log('ERROR:', error)

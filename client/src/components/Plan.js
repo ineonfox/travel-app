@@ -81,7 +81,7 @@ export default function Plan() {
 
         setOpenEditor("");
     }
-
+    
     return(
         <div className='plan-page'>
             {openEditor !== "" && data !== [] ? 
@@ -136,9 +136,9 @@ export default function Plan() {
             {/* Weather panel*/}
             <div className='plan-weather'>
                 <p>Прогноз погоди у місті {state.city}</p>
-                <Weather/>
-                <Weather/>
-                <Weather/>
+                <Weather degrees={"+25"} date={"10.06.2023"} icon={'sun.png'}/>
+                <Weather degrees={"+20"} date={"11.06.2023"} icon={'rain.png'}/>
+                <Weather degrees={"+21"} date={"12.06.2023"} icon={'rain.png'}/>
                 {/* <div className='weather-filler'/> */}
             </div>
 

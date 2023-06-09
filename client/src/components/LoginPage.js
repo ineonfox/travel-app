@@ -1,33 +1,64 @@
+import { useState } from 'react';
 import './LoginPage.css';
+import { useNavigate } from 'react-router-dom';
 
-export default function LoginPage() {
+export default function LoginPage(props) {
+    var bcrypt = require('bcryptjs');
+
+    const navigate = useNavigate();
+
+    const [loginEmail, SetLoginEmail] = useState();
+    const [loginPassword, SetLoginPassword] = useState();
+
     const handleOnChange = (e) => {
-        // e.preventDefault();
-        // const value = e.target.value;
-        // switch(e.target.id) {
-        //     case "travelCity":
-        //         setCity(value);
-        //         break;
-        //     case "startDate":
-        //         setStartDate(value);
-        //         break;
-        //     case "endDate":
-        //         setEndDate(value);
-        //         break;
-        //     default:
-        //         setCity(value);
-        //         break;
-        // }
+        e.preventDefault();
+        const value = e.target.value;
+        switch(e.target.id) {
+            case "emailLogin":
+                SetLoginEmail(value);
+                break;
+            case "passwordLogin":
+                SetLoginPassword(value);
+                break;
+            default:
+                SetLoginEmail(value);
+                break;
+        }
     };
+
+    function handleLoginClick(event) {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: loginEmail /*password: bcrypt.hashSync(loginPassword, salt)*/ })
+        };
+        fetch('/api/login', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                // console.log(data);
+                const isPasswordCorrect = bcrypt.compareSync(loginPassword, data[0].Password)
+                props.setIsLoggedIn(isPasswordCorrect);
+                isPasswordCorrect ? props.setIsAdmin(data[0].Role === "Admin") : props.setIsAdmin(false);
+            })
+            .then(navigate('/'));
+    }
+
+    function handleRegisterClick(event) {
+        navigate('/register');
+    }
 
     return (
         <div>
             <div className="screen-div"></div>
             
-            <div className="form-div login-div">
-                <p>Логін / Реєстрація</p>
-            <label className="form-lbl-where" htmlFor="travelCity">E-mail</label>
-            <input className="form-inp-where" placeholder="Вкажіть вашу електронну скриньку..." required type="email" id="travelCity" name="travelCity" onChange={handleOnChange} />
+            <div className="form-div login-div" >
+                <p>Логін</p>
+                <label className="form-lbl-where" htmlFor="emailLogin">E-mail</label>
+                <input className="form-inp-where" placeholder="Вкажіть вашу електронну скриньку..." required type="email" id="emailLogin" name="emailLogin" onChange={handleOnChange} />
+                <label className="form-lbl-where" htmlFor="passwordLogin">Пароль</label>
+                <input className="form-inp-where" placeholder="Вкажіть пароль..." required type="password" id="passwordLogin" name="passwordLogin" onChange={handleOnChange} />
+                <button className="form-button login-button" type="button" onClick={handleLoginClick}>Увійти</button>
+                <button className="form-button register-button" type="button" onClick={handleRegisterClick}>Зареєструватись</button>
             </div>
 
             <div className="img-link">

@@ -1,8 +1,21 @@
 .login-div {
     display: flex;
     flex-direction: column;
+    height: 260px;
+    width: 375px;
 }
 
 .login-div > p {
     font-size: 1.5em;
+}
+
+.register-button {
+    min-height: 26px;
+    font-size: 0.85em;
+    max-width:  130px;
+    align-self: flex-end;
+}
+
+.login-button {
+    min-height: 36px;
 }

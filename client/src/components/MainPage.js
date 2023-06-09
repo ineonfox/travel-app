@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import './MainPage.css';
 
-export default function MainPage() {
+export default function MainPage(props) {
     const [city, setCity] = useState();
     const [startDate, setStartDate] = useState(new Date().toISOString().slice(0, 10));
     const [endDate, setEndDate] = useState();
@@ -32,17 +32,24 @@ export default function MainPage() {
         navigate('/steps', {state: {city, startDate, endDate}});
     }
 
-    // function handleLoginClick(event) {
-    //     navigate('/login');
-    // }
+    function handleLoginClick(event) {
+        navigate('/login');
+    }
+
+    function handleAdminClick(event) {
+        navigate('/admin');
+    }
 
     var minDate = new Date().toISOString().slice(0, 10);
     return(
         <div>
         <div className="screen-div"></div>
-        {/* <button className="login-button-main" type="button" onClick={handleLoginClick}>
-            Логін / Реєстрація
-        </button> */}
+        <button className="login-button-main" type="button" onClick={handleLoginClick} disabled={props.isLoggedIn}>
+            <img src='./img/icons/login-white.png' style={{width: "24px", alignSelf: "center"}} alt='Login' className='sight-item__button-icon' /> Логін / Реєстрація
+        </button>
+        <button className="admin-button-main" type="button" onClick={handleAdminClick} style={{display: props.isAdmin ? "flex" : "none"}}>
+            <img src='./img/icons/cog.png' style={{width: "36px"}} alt='Settings'/>
+        </button>
         <div className="form-div grid-form-div">
             <label className="form-lbl-where" htmlFor="travelCity">Куди плануєте подорожувати?</label>
             <input className="form-inp-where" placeholder="Впишіть назву міста..." required type="text" id="travelCity" name="travelCity" onChange={handleOnChange} />

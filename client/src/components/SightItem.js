@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function SightItem(props) {
   
-  const url = `https://www.google.com/maps/dir/?api=1&destination=${props.address}+${props.cityName}`
+  const url = `https://www.google.com/maps/dir/?api=1&destination=${props.address}+${props.cityName}&origin=50.446332, 30.495052`
   // const endTime = addHours(props.startTime, props.time)
   const imgString = `./img/sightimg/${props.imageName}`;
 
