@@ -8,6 +8,8 @@ export default function MainPage(props) {
     const [endDate, setEndDate] = useState();
     const navigate = useNavigate();
 
+    const loginIconPath = props.isLoggedIn ? './img/icons/person.png' : './img/icons/login-white.png';
+
     const handleOnChange = (e) => {
         e.preventDefault();
         const value = e.target.value;
@@ -45,7 +47,8 @@ export default function MainPage(props) {
         <div>
         <div className="screen-div"></div>
         <button className="login-button-main" type="button" onClick={handleLoginClick} disabled={props.isLoggedIn}>
-            <img src='./img/icons/login-white.png' style={{width: "24px", alignSelf: "center"}} alt='Login' className='sight-item__button-icon' /> Логін / Реєстрація
+            <img src={loginIconPath} style={{width: "24px", alignSelf: "center"}} alt='Login' className='sight-item__button-icon' /> 
+            {props.isLoggedIn ? props.isLoggedIn : "Логін / Реєстрація"}
         </button>
         <button className="admin-button-main" type="button" onClick={handleAdminClick} style={{display: props.isAdmin ? "flex" : "none"}}>
             <img src='./img/icons/cog.png' style={{width: "36px"}} alt='Settings'/>

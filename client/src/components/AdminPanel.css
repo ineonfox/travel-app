@@ -2,8 +2,8 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 7fr;
 
-    height: 420px;
-    width: 800px;
+    height: 460px;
+    width: 840px;
     animation: bigger-form 1.2s;
     padding: 0;
 }
@@ -37,4 +37,9 @@
 
 .admin-tab-button:active {
     background-color: #005698;
+}
+
+#allColumnsAdmin {
+    grid-column-start: 2;
+    grid-column-end: span 3;   
 }

@@ -48,7 +48,7 @@ app.get("/api/getFacts/:type/:city", (req, res) => {
 
 app.post("/api/register", (req, res) => {
   let data = req.body;
-  console.log(JSON.stringify(data));
+  // console.log(JSON.stringify(data));
   // res.send('Data Received: ' + JSON.stringify(data));
   
   db.one(`INSERT INTO public."User" ("Nickname", "Email", "Password") VALUES ('${data.nickname}'::character varying, '${data.email}'::text, '${data.password}'::text) returning "ID"`)
@@ -63,6 +63,16 @@ app.post("/api/login", (req, res) => {
   let data = req.body;
   console.log(JSON.stringify(data));
   db.any(`SELECT * FROM public."User" u WHERE u."Email" = '${data.email}'`)
+  .then((data) => res.send(data))
+  .catch((error) => {
+    console.log('ERROR:', error)
+  });
+});
+
+app.post("/api/create", (req, res) => {
+  let data = req.body;
+  console.log(JSON.stringify(data));
+  db.any(`INSERT INTO public."Sight" ("Name", "Type", "Address", "AverageTimeInHours") VALUES ('${data.Name}'::character varying, '${data.Type}'::character varying, '${data.Address}'::character varying, '${data.AverageTime}'::real) returning "ID"`)
   .then((data) => res.send(data))
   .catch((error) => {
     console.log('ERROR:', error)

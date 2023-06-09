@@ -1,0 +1,64 @@
+.create-div {
+    grid-row: 2;
+    grid-column: 1 / 4;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.create-div > * {
+    margin: 20px 10px 40px 10px;
+    max-height: 100px;
+}
+
+.create-div > button {
+    /* position: inherit;
+    justify-items: center; */
+    height: 40px;
+    width: 320px;
+    margin: 10px 10px 10px 10px;
+    /* transform: translateX(-50%); */
+}
+
+.create-div > label {
+    font-size: 1.45em;
+}
+
+#placeName {
+    width: 45%;
+}
+
+#placeType {
+    width: 15%;
+}
+
+#placeAddress {
+    width: 15%;
+}
+
+#placeAverageTime {
+    width: 8%;
+}
+
+#placeCity {
+    width: 20%;
+}
+
+#notif-create-div {
+    background-color: #22DD2288;
+    padding: 10px 22px;
+    border-radius: 8px;
+    position: absolute;
+    min-width: 250px;
+    opacity: 0%;
+    transition: opacity 0.8s;
+}
+
+@keyframes opacity-animated {
+    0% {opacity: 0%;}
+    10% {opacity: 100%;}
+    80% {opacity: 100%;}
+    100% {opacity: 0%;}
+}

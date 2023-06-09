@@ -35,9 +35,9 @@ export default function LoginPage(props) {
         fetch('/api/login', requestOptions)
             .then(response => response.json())
             .then(data => {
-                // console.log(data);
+                //console.log(data);
                 const isPasswordCorrect = bcrypt.compareSync(loginPassword, data[0].Password)
-                props.setIsLoggedIn(isPasswordCorrect);
+                props.setIsLoggedIn(isPasswordCorrect ? data[0].Nickname : "");
                 isPasswordCorrect ? props.setIsAdmin(data[0].Role === "Admin") : props.setIsAdmin(false);
             })
             .then(navigate('/'));
